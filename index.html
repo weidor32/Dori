@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dori's Rating Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR SECTION - Top navigation bar with settings, account, and search -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="settings-icon">⚙️</span>
+        </div>
+        
+        <div class="navbar-center">
+            <input type="text" class="search-bar" placeholder="Search ratings...">
+        </div>
+        
+        <div class="navbar-right">
+            <span class="account-icon">👤</span>
+        </div>
+    </nav>
+
+    <!-- CATEGORY TABS - Food, Movies, Books buttons -->
+    <div class="tabs-container">
+        <button class="tab-button active" onclick="filterCategory('all')">All Ratings</button>
+        <button class="tab-button" onclick="filterCategory('food')">🍔 Food</button>
+        <button class="tab-button" onclick="filterCategory('movies')">🎬 Movies</button>
+        <button class="tab-button" onclick="filterCategory('books')">📚 Books</button>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="container">
+        
+        <!-- POSTS FEED - Shows posts from friends with ratings -->
+        <div class="feed">
+            
+            <!-- POST 1 - Example post from a friend -->
+            <div class="post food-post">
+                <div class="post-header">
+                    <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
+                    <div class="post-info">
+                        <h3 class="post-author">Sarah</h3>
+                        <p class="post-category">Food</p>
+                    </div>
+                </div>
+                <img src="https://via.placeholder.com/400x300?text=Sushi" alt="Post" class="post-image">
+                <div class="post-content">
+                    <h2>Amazing Sushi Restaurant! 🍣</h2>
+                    <div class="rating">Rating: <span class="rating-value">9/10</span></div>
+                    <p class="post-description">The best sushi I've ever had! Fresh fish and so delicious!</p>
+                </div>
+                <div class="post-actions">
+                    <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
+                    <button class="comment-button">💬 Comment</button>
+                </div>
+            </div>
+
+            <!-- POST 2 - Movie example -->
+            <div class="post movies-post">
+                <div class="post-header">
+                    <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
+                    <div class="post-info">
+                        <h3 class="post-author">Alex</h3>
+                        <p class="post-category">Movies</p>
+                    </div>
+                </div>
+                <img src="https://via.placeholder.com/400x300?text=Spirited+Away" alt="Post" class="post-image">
+                <div class="post-content">
+                    <h2>Spirited Away - A Masterpiece! 🎬</h2>
+                    <div class="rating">Rating: <span class="rating-value">10/10</span></div>
+                    <p class="post-description">Such a beautiful and magical movie! Studio Ghibli is amazing!</p>
+                </div>
+                <div class="post-actions">
+                    <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
+                    <button class="comment-button">💬 Comment</button>
+                </div>
+            </div>
+
+            <!-- POST 3 - Book example -->
+            <div class="post books-post">
+                <div class="post-header">
+                    <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
+                    <div class="post-info">
+                        <h3 class="post-author">Jordan</h3>
+                        <p class="post-category">Books</p>
+                    </div>
+                </div>
+                <img src="https://via.placeholder.com/400x300?text=Book+Cover" alt="Post" class="post-image">
+                <div class="post-content">
+                    <h2>Percy Jackson - Great Adventure! 📚</h2>
+                    <div class="rating">Rating: <span class="rating-value">8/10</span></div>
+                    <p class="post-description">Such a fun fantasy book! Perfect for our age group!</p>
+                </div>
+                <div class="post-actions">
+                    <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
+                    <button class="comment-button">💬 Comment</button>
+                </div>
+            </div>
+
+            <!-- POST 4 - Another food example -->
+            <div class="post food-post">
+                <div class="post-header">
+                    <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
+                    <div class="post-info">
+                        <h3 class="post-author">Emma</h3>
+                        <p class="post-category">Food</p>
+                    </div>
+                </div>
+                <img src="https://via.placeholder.com/400x300?text=Pizza" alt="Post" class="post-image">
+                <div class="post-content">
+                    <h2>Pizza Night at Marco's! 🍕</h2>
+                    <div class="rating">Rating: <span class="rating-value">7/10</span></div>
+                    <p class="post-description">Good pizza, but the crust could be better. Still yummy!</p>
+                </div>
+                <div class="post-actions">
+                    <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
+                    <button class="comment-button">💬 Comment</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT - Links to JavaScript file for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>
