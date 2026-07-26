@@ -1,0 +1,317 @@
+/* ===== SETTINGS PAGE STYLING ===== */
+/* Special styles for the settings page */
+
+/* SETTINGS CONTAINER - Main content area */
+.settings-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* SETTINGS TITLE - Page heading */
+.settings-title {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+/* BACK BUTTON - Navigate back to home */
+.back-button {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
+
+/* SETTINGS CARD - Container for each setting */
+.settings-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #FFB6C1;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CARD HEADER */
+.settings-card-header {
+    background: linear-gradient(90deg, #FFE5D9 0%, #FFD4E5 100%);
+    padding: 20px;
+    border-bottom: 2px solid #FFB6C1;
+}
+
+.settings-card-header h2 {
+    color: #333;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+}
+
+.settings-card-header p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* CARD CONTENT */
+.settings-card-content {
+    padding: 25px;
+}
+
+/* ===== BRIGHTNESS SETTINGS ===== */
+
+.brightness-control {
+    margin-bottom: 25px;
+}
+
+.brightness-control label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* SLIDER - Brightness adjustment */
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #FFB6C1 0%, #FF9E7D 100%);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+/* Styling for slider thumb (the draggable part) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #FF9E7D;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #FF9E7D;
+}
+
+#brightness-value {
+    display: inline-block;
+    color: #FF9E7D;
+    font-weight: 600;
+    font-size: 16px;
+    float: right;
+}
+
+/* BRIGHTNESS PREVIEW */
+.brightness-preview {
+    margin-top: 20px;
+}
+
+.preview-text {
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#brightness-preview {
+    width: 100%;
+    height: 100px;
+    background-color: #FFE5D9;
+    border-radius: 10px;
+    border: 2px dashed #FFB6C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-weight: 500;
+}
+
+/* ===== BACKDROP SETTINGS ===== */
+
+/* FILE INPUT - Hidden, styled with label */
+.file-input {
+    display: none;
+}
+
+.upload-label {
+    display: block;
+    padding: 20px;
+    background-color: #E5D4FF;
+    border: 2px dashed #DDA0DD;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #DDA0DD;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.upload-label:hover {
+    background-color: #DDA0DD;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.upload-hint {
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    margin: 8px 0 0 0;
+}
+
+/* BACKDROP PREVIEW */
+.backdrop-preview {
+    margin-top: 20px;
+}
+
+#backdrop-preview {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    border: 2px dashed #DDA0DD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.no-image-text {
+    color: #999;
+    font-weight: 500;
+}
+
+/* BACKDROP BUTTONS */
+.backdrop-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ===== BUTTONS ===== */
+
+.save-button,
+.reset-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.save-button {
+    width: 100%;
+    background-color: #FF9E7D;
+    color: white;
+    margin-top: 15px;
+}
+
+.save-button:hover {
+    background-color: #FF6B6B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.reset-button {
+    flex: 1;
+    background-color: #FFB6C1;
+    color: white;
+}
+
+.reset-button:hover {
+    background-color: #FF9E7D;
+    transform: translateY(-2px);
+}
+
+/* ===== ABOUT SECTION ===== */
+
+.about-text {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 0;
+}
+
+.version-text {
+    color: #999;
+    font-size: 12px;
+    margin-top: 15px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #EEE;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 600px) {
+    .settings-container {
+        margin: 15px auto;
+    }
+
+    .settings-card-header h2 {
+        font-size: 18px;
+    }
+
+    .settings-card-content {
+        padding: 15px;
+    }
+
+    .settings-title {
+        font-size: 20px;
+    }
+
+    #brightness-preview,
+    #backdrop-preview {
+        height: 150px;
+    }
+
+    .backdrop-buttons {
+        flex-direction: column;
+    }
+
+    .reset-button {
+        width: 100%;
+    }
+}
