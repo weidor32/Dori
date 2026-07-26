@@ -2,10 +2,15 @@
 
 /* LOAD PAGE */
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Page loaded, starting initialization...');
     loadUserSettings();
     loadSavedRatings();
-    setupCommentButtons();
-    restoreLikedState();
+    
+    // Wait a tiny bit for DOM to update, then restore likes
+    setTimeout(function() {
+        restoreLikedState();
+        setupCommentButtons();
+    }, 100);
 });
 
 /* FILTER FUNCTION - Shows/hides posts by category */
@@ -66,6 +71,8 @@ function toggleLike(button) {
     const postImage = post.querySelector('.post-image').src;
     const postRating = post.querySelector('.rating-value').textContent;
     
+    console.log('Toggling like for:', postTitle);
+    
     // Check if already liked
     if (button.classList.contains('liked')) {
         // Unlike - remove the liked style
@@ -74,6 +81,7 @@ function toggleLike(button) {
         
         // Remove from liked posts
         removeLikedPost(postTitle);
+        console.log('Unliked:', postTitle);
     } else {
         // Like - add the liked style
         button.classList.add('liked');
@@ -86,6 +94,7 @@ function toggleLike(button) {
             rating: postRating,
             timestamp: new Date().toLocaleString()
         });
+        console.log('Liked:', postTitle);
     }
 }
 
@@ -98,6 +107,7 @@ function saveLikedPost(post) {
     if (!exists) {
         likedPosts.unshift(post);
         localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+        console.log('Saved liked post. Total liked:', likedPosts.length);
     }
 }
 
@@ -106,12 +116,16 @@ function removeLikedPost(postTitle) {
     let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
     likedPosts = likedPosts.filter(p => p.title !== postTitle);
     localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+    console.log('Removed liked post. Total liked:', likedPosts.length);
 }
 
 /* RESTORE LIKED STATE - Check if posts are in liked list */
 function restoreLikedState() {
     const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    console.log('Restoring liked state. Liked posts:', likedPosts);
+    
     const allLikeButtons = document.querySelectorAll('.like-button');
+    console.log('Found', allLikeButtons.length, 'like buttons');
     
     allLikeButtons.forEach(button => {
         const post = button.closest('.post');
@@ -119,6 +133,8 @@ function restoreLikedState() {
         
         // Check if this post is in the liked list
         const isLiked = likedPosts.some(p => p.title === postTitle);
+        
+        console.log('Checking:', postTitle, '- Is liked?', isLiked);
         
         if (isLiked) {
             button.classList.add('liked');
@@ -190,6 +206,8 @@ function deleteComment(button) {
 /* LOAD SAVED RATINGS */
 function loadSavedRatings() {
     const savedRatings = JSON.parse(localStorage.getItem('allRatings')) || [];
+    
+    console.log('Loading saved ratings. Count:', savedRatings.length);
     
     if (savedRatings.length === 0) return;
     
