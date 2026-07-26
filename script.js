@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadUserSettings();
     loadSavedRatings();
     setupCommentButtons();
+    restoreLikedState();
 });
 
 /* FILTER FUNCTION - Shows/hides posts by category */
@@ -105,6 +106,28 @@ function removeLikedPost(postTitle) {
     let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
     likedPosts = likedPosts.filter(p => p.title !== postTitle);
     localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+}
+
+/* RESTORE LIKED STATE - Check if posts are in liked list */
+function restoreLikedState() {
+    const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    const allLikeButtons = document.querySelectorAll('.like-button');
+    
+    allLikeButtons.forEach(button => {
+        const post = button.closest('.post');
+        const postTitle = post.querySelector('h2').textContent;
+        
+        // Check if this post is in the liked list
+        const isLiked = likedPosts.some(p => p.title === postTitle);
+        
+        if (isLiked) {
+            button.classList.add('liked');
+            button.textContent = '❤️ Liked!';
+        } else {
+            button.classList.remove('liked');
+            button.textContent = '❤️ Like';
+        }
+    });
 }
 
 /* TOGGLE COMMENT SECTION */
