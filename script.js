@@ -60,16 +60,51 @@ function searchRatings(searchTerm) {
 
 /* LIKE BUTTON FUNCTION - Toggles like when clicked */
 function toggleLike(button) {
+    const post = button.closest('.post');
+    const postTitle = post.querySelector('h2').textContent;
+    const postImage = post.querySelector('.post-image').src;
+    const postRating = post.querySelector('.rating-value').textContent;
+    
     // Check if already liked
     if (button.classList.contains('liked')) {
         // Unlike - remove the liked style
         button.classList.remove('liked');
         button.textContent = '❤️ Like';
+        
+        // Remove from liked posts
+        removeLikedPost(postTitle);
     } else {
         // Like - add the liked style
         button.classList.add('liked');
         button.textContent = '❤️ Liked!';
+        
+        // Save to liked posts
+        saveLikedPost({
+            title: postTitle,
+            image: postImage,
+            rating: postRating,
+            timestamp: new Date().toLocaleString()
+        });
     }
+}
+
+/* SAVE LIKED POST */
+function saveLikedPost(post) {
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    
+    // Check if already in liked posts
+    const exists = likedPosts.some(p => p.title === post.title);
+    if (!exists) {
+        likedPosts.unshift(post);
+        localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+    }
+}
+
+/* REMOVE LIKED POST */
+function removeLikedPost(postTitle) {
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    likedPosts = likedPosts.filter(p => p.title !== postTitle);
+    localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
 }
 
 /* TOGGLE COMMENT SECTION */
@@ -136,6 +171,7 @@ function loadSavedRatings() {
     if (savedRatings.length === 0) return;
     
     const feed = document.getElementById('feed');
+    if (!feed) return;
     
     savedRatings.forEach(rating => {
         // Create category emoji
