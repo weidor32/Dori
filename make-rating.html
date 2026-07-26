@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Rating - Doris's Rating Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="make-rating-style.css">
+</head>
+<body>
+    <!-- NAVBAR SECTION -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="back-button" onclick="goHome()">← Back</span>
+        </div>
+        
+        <div class="navbar-center">
+            <h1 class="make-rating-title">⭐ Make a Rating</h1>
+        </div>
+        
+        <div class="navbar-right">
+        </div>
+    </nav>
+
+    <!-- MAKE RATING CONTAINER -->
+    <div class="make-rating-container">
+        
+        <!-- RATING FORM CARD -->
+        <div class="rating-form-card">
+            <div class="rating-form-header">
+                <h2>Create Your Rating</h2>
+                <p>Share what you think about a movie, book, or food!</p>
+            </div>
+            
+            <div class="rating-form-content">
+                
+                <!-- TITLE INPUT -->
+                <div class="form-group">
+                    <label for="rating-title">📌 Title:</label>
+                    <input 
+                        type="text" 
+                        id="rating-title" 
+                        class="form-input"
+                        placeholder="What are you rating? (e.g., 'Spirited Away', 'The Hunger Games', 'Pizza')"
+                        maxlength="100"
+                    >
+                </div>
+
+                <!-- CATEGORY SELECT -->
+                <div class="form-group">
+                    <label for="rating-category">📂 Category:</label>
+                    <select id="rating-category" class="form-select">
+                        <option value="">-- Let AI Choose --</option>
+                        <option value="movies-post">🎬 Movies</option>
+                        <option value="books-post">📚 Books</option>
+                        <option value="food-post">🍔 Food</option>
+                    </select>
+                </div>
+
+                <!-- IMAGE UPLOAD -->
+                <div class="form-group">
+                    <label for="rating-image">🖼️ Upload Image:</label>
+                    <input 
+                        type="file" 
+                        id="rating-image" 
+                        accept="image/*"
+                        onchange="previewRatingImage(event)"
+                        class="file-input"
+                    >
+                    <div class="image-preview" id="rating-image-preview">
+                        <p class="no-image-text">No image selected</p>
+                    </div>
+                </div>
+
+                <!-- RATING SLIDER -->
+                <div class="form-group">
+                    <label for="rating-score">⭐ Rating:</label>
+                    <div class="rating-slider-container">
+                        <input 
+                            type="range" 
+                            id="rating-score" 
+                            min="-10" 
+                            max="10" 
+                            value="0" 
+                            oninput="updateRatingDisplay(this.value)"
+                            class="rating-slider"
+                        >
+                        <span id="rating-display" class="rating-display">0/10</span>
+                    </div>
+                </div>
+
+                <!-- COMMENTS INPUT -->
+                <div class="form-group">
+                    <label for="rating-comments">💬 Your Comments:</label>
+                    <textarea 
+                        id="rating-comments" 
+                        class="form-textarea"
+                        placeholder="What do you think about this? What did you like or dislike?"
+                        maxlength="500"
+                    ></textarea>
+                    <div class="character-count">
+                        <span id="comments-char-count">0</span>/500
+                    </div>
+                </div>
+
+            </div>
+            
+            <button class="submit-rating-btn" onclick="submitRating()">🚀 Post Your Rating</button>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="make-rating.js"></script>
+</body>
+</html>
