@@ -365,19 +365,23 @@ body {
 .comment-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 8px;
 }
 
 .comment-avatar {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .comment-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .comment-author {
@@ -390,7 +394,7 @@ body {
 .comment-time {
     color: #999;
     font-size: 11px;
-    margin: 2px 0 0 0;
+    margin: 0;
 }
 
 .comment-text {
@@ -409,6 +413,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
+    width: fit-content;
 }
 
 .delete-comment-btn:hover {
@@ -498,5 +503,14 @@ body {
 
     .comments-section {
         padding: 12px 15px;
+    }
+
+    .comment-header {
+        gap: 6px;
+    }
+
+    .comment-avatar {
+        width: 20px;
+        height: 20px;
     }
 }
