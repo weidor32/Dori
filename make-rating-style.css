@@ -1,0 +1,248 @@
+/* ===== MAKE RATING PAGE STYLING ===== */
+
+.make-rating-title {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+.make-rating-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* RATING FORM CARD */
+.rating-form-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #DDA0DD;
+}
+
+.rating-form-header {
+    background: linear-gradient(90deg, #E5D4FF 0%, #FFD4E5 100%);
+    padding: 20px;
+    border-bottom: 2px solid #DDA0DD;
+}
+
+.rating-form-header h2 {
+    color: #333;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+}
+
+.rating-form-header p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.rating-form-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* FORM GROUP */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* FORM INPUTS */
+.form-input,
+.form-select {
+    padding: 12px;
+    border: 2px solid #DDA0DD;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #FF9E7D;
+    box-shadow: 0 0 8px rgba(255, 158, 125, 0.2);
+}
+
+.form-select {
+    cursor: pointer;
+    background-color: white;
+}
+
+/* TEXTAREA */
+.form-textarea {
+    padding: 12px;
+    border: 2px solid #DDA0DD;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    resize: vertical;
+    min-height: 120px;
+    max-height: 200px;
+    transition: border-color 0.3s;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #FF9E7D;
+    box-shadow: 0 0 8px rgba(255, 158, 125, 0.2);
+}
+
+.character-count {
+    color: #999;
+    font-size: 12px;
+    text-align: right;
+}
+
+/* FILE INPUT */
+.file-input {
+    display: block;
+    padding: 12px;
+    border: 2px dashed #DDA0DD;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.file-input:hover {
+    background-color: #F5F5F5;
+}
+
+/* IMAGE PREVIEW */
+.image-preview {
+    width: 100%;
+    height: 200px;
+    background-color: #F5F5F5;
+    border: 2px dashed #DDA0DD;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image-text {
+    color: #999;
+    font-weight: 500;
+}
+
+/* RATING SLIDER */
+.rating-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rating-slider {
+    flex: 1;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #FF6B6B 0%, #FFB6C1 50%, #6FD369 100%);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.rating-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #DDA0DD;
+}
+
+.rating-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #DDA0DD;
+}
+
+.rating-display {
+    min-width: 60px;
+    color: #DDA0DD;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* SUBMIT BUTTON */
+.submit-rating-btn {
+    width: 100%;
+    padding: 14px 25px;
+    background-color: #DDA0DD;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+
+.submit-rating-btn:hover {
+    background-color: #C080D0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(221, 160, 221, 0.3);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+    .make-rating-container {
+        margin: 15px auto;
+    }
+
+    .rating-form-header h2 {
+        font-size: 18px;
+    }
+
+    .rating-form-content {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .make-rating-title {
+        font-size: 20px;
+    }
+
+    .image-preview {
+        height: 150px;
+    }
+
+    .rating-slider-container {
+        gap: 10px;
+    }
+}
