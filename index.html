@@ -3,38 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dori's Rating Platform</title>
+    <title>Doris's Rating Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- NAVBAR SECTION - Top navigation bar with settings, account, and search -->
     <nav class="navbar">
         <div class="navbar-left">
-            <span class="settings-icon">⚙️</span>
+            <span class="settings-icon" onclick="goToSettings()">⚙️</span>
         </div>
         
         <div class="navbar-center">
-            <input type="text" class="search-bar" placeholder="Search ratings...">
+            <input type="text" class="search-bar" placeholder="Search ratings..." onkeyup="searchRatings(this.value)">
         </div>
         
         <div class="navbar-right">
-            <span class="account-icon">👤</span>
+            <span class="account-icon" onclick="goToProfile()">👤</span>
         </div>
     </nav>
 
     <!-- CATEGORY TABS - Food, Movies, Books buttons -->
     <div class="tabs-container">
         <button class="tab-button active" onclick="filterCategory('all')">All Ratings</button>
-        <button class="tab-button" onclick="filterCategory('food')">🍔 Food</button>
-        <button class="tab-button" onclick="filterCategory('movies')">🎬 Movies</button>
-        <button class="tab-button" onclick="filterCategory('books')">📚 Books</button>
+        <button class="tab-button" onclick="filterCategory('food-post')">🍔 Food</button>
+        <button class="tab-button" onclick="filterCategory('movies-post')">🎬 Movies</button>
+        <button class="tab-button" onclick="filterCategory('books-post')">📚 Books</button>
+    </div>
+
+    <!-- MAKE RATING BUTTON -->
+    <div class="make-rating-floating">
+        <button class="make-rating-btn" onclick="goToMakeRating()">⭐ Make a Rating</button>
     </div>
 
     <!-- MAIN CONTENT AREA -->
     <div class="container">
         
         <!-- POSTS FEED - Shows posts from friends with ratings -->
-        <div class="feed">
+        <div class="feed" id="feed">
             
             <!-- POST 1 - Example post from a friend -->
             <div class="post food-post">
@@ -42,7 +47,7 @@
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
                     <div class="post-info">
                         <h3 class="post-author">Sarah</h3>
-                        <p class="post-category">Food</p>
+                        <p class="post-category">🍔 Food</p>
                     </div>
                 </div>
                 <img src="https://via.placeholder.com/400x300?text=Sushi" alt="Post" class="post-image">
@@ -53,7 +58,14 @@
                 </div>
                 <div class="post-actions">
                     <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
-                    <button class="comment-button">💬 Comment</button>
+                    <button class="comment-button" onclick="toggleCommentSection(this)">💬 Comment</button>
+                </div>
+                <div class="comments-section" style="display:none;">
+                    <div class="comments-list"></div>
+                    <div class="comment-input-area">
+                        <input type="text" placeholder="Write a comment..." class="comment-input">
+                        <button onclick="postComment(this)">Post</button>
+                    </div>
                 </div>
             </div>
 
@@ -63,7 +75,7 @@
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
                     <div class="post-info">
                         <h3 class="post-author">Alex</h3>
-                        <p class="post-category">Movies</p>
+                        <p class="post-category">🎬 Movies</p>
                     </div>
                 </div>
                 <img src="https://via.placeholder.com/400x300?text=Spirited+Away" alt="Post" class="post-image">
@@ -74,7 +86,14 @@
                 </div>
                 <div class="post-actions">
                     <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
-                    <button class="comment-button">💬 Comment</button>
+                    <button class="comment-button" onclick="toggleCommentSection(this)">💬 Comment</button>
+                </div>
+                <div class="comments-section" style="display:none;">
+                    <div class="comments-list"></div>
+                    <div class="comment-input-area">
+                        <input type="text" placeholder="Write a comment..." class="comment-input">
+                        <button onclick="postComment(this)">Post</button>
+                    </div>
                 </div>
             </div>
 
@@ -84,7 +103,7 @@
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
                     <div class="post-info">
                         <h3 class="post-author">Jordan</h3>
-                        <p class="post-category">Books</p>
+                        <p class="post-category">📚 Books</p>
                     </div>
                 </div>
                 <img src="https://via.placeholder.com/400x300?text=Book+Cover" alt="Post" class="post-image">
@@ -95,7 +114,14 @@
                 </div>
                 <div class="post-actions">
                     <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
-                    <button class="comment-button">💬 Comment</button>
+                    <button class="comment-button" onclick="toggleCommentSection(this)">💬 Comment</button>
+                </div>
+                <div class="comments-section" style="display:none;">
+                    <div class="comments-list"></div>
+                    <div class="comment-input-area">
+                        <input type="text" placeholder="Write a comment..." class="comment-input">
+                        <button onclick="postComment(this)">Post</button>
+                    </div>
                 </div>
             </div>
 
@@ -105,7 +131,7 @@
                     <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
                     <div class="post-info">
                         <h3 class="post-author">Emma</h3>
-                        <p class="post-category">Food</p>
+                        <p class="post-category">🍔 Food</p>
                     </div>
                 </div>
                 <img src="https://via.placeholder.com/400x300?text=Pizza" alt="Post" class="post-image">
@@ -116,7 +142,14 @@
                 </div>
                 <div class="post-actions">
                     <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
-                    <button class="comment-button">💬 Comment</button>
+                    <button class="comment-button" onclick="toggleCommentSection(this)">💬 Comment</button>
+                </div>
+                <div class="comments-section" style="display:none;">
+                    <div class="comments-list"></div>
+                    <div class="comment-input-area">
+                        <input type="text" placeholder="Write a comment..." class="comment-input">
+                        <button onclick="postComment(this)">Post</button>
+                    </div>
                 </div>
             </div>
 
