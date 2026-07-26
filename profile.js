@@ -3,6 +3,7 @@
 // LOAD PROFILE ON PAGE LOAD
 document.addEventListener('DOMContentLoaded', function() {
     loadProfile();
+    loadLikedPosts();
     updateCharacterCount();
 });
 
@@ -65,6 +66,49 @@ function loadProfile() {
     if (savedAboutMe) {
         document.getElementById('about-me-input').value = savedAboutMe;
         updateCharacterCount();
+    }
+}
+
+// LOAD LIKED POSTS
+function loadLikedPosts() {
+    const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    const container = document.getElementById('liked-posts-container');
+    
+    if (!container) return;
+    
+    // Clear container
+    container.innerHTML = '';
+    
+    if (likedPosts.length === 0) {
+        container.innerHTML = '<p class="no-liked-posts">You haven\'t liked any posts yet! 💔</p>';
+        return;
+    }
+    
+    // Add each liked post
+    likedPosts.forEach((post, index) => {
+        const likedPostHTML = `
+            <div class="liked-post-item">
+                <img src="${post.image}" alt="${post.title}" class="liked-post-image">
+                <div class="liked-post-info">
+                    <h4 class="liked-post-title">${post.title}</h4>
+                    <p class="liked-post-rating">⭐ ${post.rating}</p>
+                    <p class="liked-post-time">Liked: ${post.timestamp}</p>
+                    <button class="unlike-btn" onclick="removeLikedPostFromProfile(${index})">💔 Unlike</button>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', likedPostHTML);
+    });
+}
+
+// REMOVE LIKED POST FROM PROFILE
+function removeLikedPostFromProfile(index) {
+    let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    
+    if (confirm('Remove this from your liked posts?')) {
+        likedPosts.splice(index, 1);
+        localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+        loadLikedPosts();
     }
 }
 
