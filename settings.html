@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Dori's Rating Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings-style.css">
+</head>
+<body>
+    <!-- NAVBAR SECTION - Top navigation with back button -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="back-button" onclick="goHome()">← Back</span>
+        </div>
+        
+        <div class="navbar-center">
+            <h1 class="settings-title">⚙️ Settings</h1>
+        </div>
+        
+        <div class="navbar-right">
+        </div>
+    </nav>
+
+    <!-- SETTINGS CONTAINER -->
+    <div class="settings-container">
+        
+        <!-- SETTINGS CARD 1 - BRIGHTNESS -->
+        <div class="settings-card brightness-card">
+            <div class="settings-card-header">
+                <h2>☀️ Brightness</h2>
+                <p>Adjust how bright your website looks</p>
+            </div>
+            
+            <div class="settings-card-content">
+                <div class="brightness-control">
+                    <label for="brightness-slider">Brightness Level:</label>
+                    <input 
+                        type="range" 
+                        id="brightness-slider" 
+                        min="50" 
+                        max="150" 
+                        value="100" 
+                        oninput="updateBrightness(this.value)"
+                        class="slider"
+                    >
+                    <span id="brightness-value">100%</span>
+                </div>
+                
+                <div class="brightness-preview">
+                    <p class="preview-text">Preview</p>
+                    <div class="preview-box" id="brightness-preview"></div>
+                </div>
+            </div>
+            
+            <button class="save-button" onclick="saveBrightness()">💾 Save Brightness</button>
+        </div>
+
+        <!-- SETTINGS CARD 2 - BACKDROP -->
+        <div class="settings-card backdrop-card">
+            <div class="settings-card-header">
+                <h2>🖼️ Custom Backdrop</h2>
+                <p>Upload your own background image</p>
+            </div>
+            
+            <div class="settings-card-content">
+                <div class="backdrop-upload">
+                    <label for="backdrop-upload" class="upload-label">
+                        📤 Click to Upload Image
+                    </label>
+                    <input 
+                        type="file" 
+                        id="backdrop-upload" 
+                        accept="image/*"
+                        onchange="previewBackdrop(event)"
+                        class="file-input"
+                    >
+                    <p class="upload-hint">Supported: JPG, PNG, GIF (Max 5MB)</p>
+                </div>
+                
+                <div class="backdrop-preview">
+                    <p class="preview-text">Preview</p>
+                    <div class="preview-box" id="backdrop-preview">
+                        <p class="no-image-text">No image selected yet</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="backdrop-buttons">
+                <button class="save-button" onclick="saveBackdrop()">💾 Save Backdrop</button>
+                <button class="reset-button" onclick="resetBackdrop()">🔄 Reset to Default</button>
+            </div>
+        </div>
+
+        <!-- SETTINGS CARD 3 - ABOUT -->
+        <div class="settings-card about-card">
+            <div class="settings-card-header">
+                <h2>ℹ️ About Dori</h2>
+                <p>Your personal rating platform</p>
+            </div>
+            
+            <div class="settings-card-content">
+                <p class="about-text">
+                    Welcome to <strong>Dori's Rating Platform</strong>! 🌟
+                </p>
+                <p class="about-text">
+                    This is your space to share and discover ratings for movies, books, and food with friends.
+                </p>
+                <p class="about-text">
+                    Made with love and Ghibli-inspired colors! 🎨✨
+                </p>
+                <p class="version-text">Version 1.0</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT - Links to settings JavaScript -->
+    <script src="settings.js"></script>
+</body>
+</html>
